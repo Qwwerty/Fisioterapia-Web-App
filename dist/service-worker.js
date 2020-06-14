@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.a84f5982acb6107f96ff36cbc4788b72.js"
+  "/precache-manifest.a226314e7779b9a26e41314608c985a5.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "paralisiafacial"});

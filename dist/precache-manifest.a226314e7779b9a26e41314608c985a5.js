@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "bd760d8a480501fc8e74",
+    "revision": "766450a6b2330400d743",
     "url": "/css/app.435b08a3.css"
   },
   {
@@ -64,12 +64,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/img/paralisia.png"
   },
   {
-    "revision": "390baba6f89e3b28baaf4b956d11b7e5",
+    "revision": "aeb09284e9d7e7953dfaae4c764d83ef",
     "url": "/index.html"
   },
   {
-    "revision": "bd760d8a480501fc8e74",
-    "url": "/js/app.781d1f23.js"
+    "revision": "766450a6b2330400d743",
+    "url": "/js/app.73958128.js"
   },
   {
     "revision": "0883e53c42d99e34627f",
