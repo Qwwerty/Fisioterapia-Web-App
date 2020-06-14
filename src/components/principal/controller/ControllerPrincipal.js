@@ -4,7 +4,7 @@ export default class ControllerPrincipal {
 
     atualizarSenha (email, senha) {
         return new Promise((resolve, reject) => {
-            axios.put('http://192.168.0.104:3000/usuarios/' + email.toUpperCase(), {
+            axios.put('http://paralisiabackend-com-br.umbler.net/usuarios/' + email.toUpperCase(), {
                 senha: senha
             })
             .then((result) => {

@@ -9,8 +9,7 @@ export default class ControllerLogin {
   cadastarUsuario(email, senha) {
     return new Promise((resolve, reject) => {
       axios
-      .post('http://192.168.0.104:3000/usuarios', {
-     // .post("http://paralisia-backend-com-br.umbler.net/usuarios", {
+      .post('http://paralisiabackend-com-br.umbler.net/usuarios', {
         email: email,
         senha: senha,
       })
@@ -28,8 +27,7 @@ export default class ControllerLogin {
   logar(email, senha) {
     return new Promise((resolve, reject) => {
       axios
-        .post('http://192.168.0.104:3000/autenticate', {
-        // .post("http://paralisia-backend-com-br.umbler.net/autenticate", {
+        .post('http://paralisiabackend-com-br.umbler.net/autenticate', {
           email: email,
           senha: senha,
         })
@@ -50,8 +48,7 @@ export default class ControllerLogin {
   pedirSenha(email){
     return new Promise((resolve, reject) => {
       axios
-      .post('http://192.168.0.104:3000/pedirSenha', {
-     // .post("http://paralisia-backend-com-br.umbler.net/pedirSenha", {
+      .post('http://paralisiabackend-com-br.umbler.net/pedirSenha', {
         email: email
       })
        /* eslint-disable */ 
