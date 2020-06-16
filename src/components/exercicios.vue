@@ -895,14 +895,10 @@
       </v-card>
     </v-dialog>
     <!--Informativo ao usuário-->
-    <v-app id="inspire">
-      <div class="text-center ma-2">
         <v-snackbar v-model="snackbar" right top v-bind:color="snacColor">
           {{ text }}
           <v-btn color="white" text @click="snackbar = false">Fechar</v-btn>
         </v-snackbar>
-      </div>
-    </v-app>
   </v-container>
 </template>
 

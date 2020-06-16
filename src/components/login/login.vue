@@ -8,7 +8,7 @@
               <v-col cols="12" sm="8" md="4">
                 <v-card class="elevation-12">
                   <v-toolbar color="light-blue" dark flat>
-                    <v-toolbar-title>Paralisia - WEB APP</v-toolbar-title>
+                    <v-toolbar-title>WEB Fisioterapia</v-toolbar-title>
                     <v-spacer></v-spacer>
                   </v-toolbar>
                   <v-card-text>
@@ -41,7 +41,7 @@
                       style="color:white"
                       @click="dialogEsqueciSenha = true"
                     >Esqueci a Senha</v-btn>
-                    <v-btn color="light-blue" style="color:white" @click="dialog = true">Cadastrar</v-btn>
+                    <v-btn color="light-blue" style="color:white" @click="dialogInformativoCad = true">Cadastrar</v-btn>
                     <v-btn color="light-blue" style="color:white" @click="entrar">Entrar</v-btn>
                   </v-card-actions>
                 </v-card>
@@ -53,6 +53,11 @@
           </v-overlay>
         </v-content>
       </v-app>
+    <!--Informativo ao usuário-->
+    <v-snackbar v-model="snackbar" right top v-bind:color="snacColor">
+      {{ text }}
+      <v-btn color="white" text @click="snackbar = false">Fechar</v-btn>
+    </v-snackbar>
     </v-app>
 
     <v-dialog v-model="dialog" persistent max-width="600px">
@@ -69,6 +74,7 @@
                   :rules="emailRules"
                   placeholder="E-mail"
                   outlined
+                  @keyup.enter="cadastrar(email, senha)"
                 ></v-text-field>
               </v-col>
               <v-col cols="12">
@@ -78,6 +84,7 @@
                   v-model="senha"
                   placeholder="Senha"
                   outlined
+                  @keyup.enter="cadastrar(email, senha)"
                 ></v-text-field>
               </v-col>
             </v-row>
@@ -114,6 +121,7 @@
                   :rules="emailRules"
                   placeholder="E-mail"
                   outlined
+                  @keyup.enter="pedirSenha(email)"
                 ></v-text-field>
               </v-col>
             </v-row>
@@ -136,15 +144,17 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
-    <!--Informativo ao usuário-->
-    <v-app id="inspire">
-      <div class="text-center ma-2">
-        <v-snackbar v-model="snackbar" right top v-bind:color="snacColor">
-          {{ text }}
-          <v-btn color="white" text @click="snackbar = false">Fechar</v-btn>
-        </v-snackbar>
-      </div>
-    </v-app>
+    <v-dialog v-model="dialogInformativoCad" persistent max-width="500">
+      <v-card id="cardInfo">
+        <v-alert color="light-blue" style="color: white; font-size: 25px">Informativo</v-alert>
+        <v-card-title class="headline"></v-card-title>
+        <v-card-text style="font-size: 20px">Favor utilizar um e-mail valido, pois se acontecer de se perde a senha, não será possível a recuperação da conta.</v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="light-blue" style="font-size: 20px" text @click="fecharDialogInf">Ok</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </div>
 </template>
 
@@ -161,6 +171,7 @@ export default {
       senha: "",
       dialog: false,
       dialogEsqueciSenha: false,
+      dialogInformativoCad: false,
       snackbar: false,
       text: "",
       snacColor: "",
@@ -189,12 +200,16 @@ export default {
           vm.overlay = false;
           vm.$router.push({ path: "/principal" });
         } else {
-          vm.openSnackbar(true, "red darken-1", "Credencias inválidas..");
+          vm.openSnackbar(true, "red darken-1", "Credencias inválidas.");
           vm.email = "";
           vm.senha = "";
           vm.overlay = false;
         }
       });
+    },
+    fecharDialogInf (){
+      this.dialog = true
+      this.dialogInformativoCad = false
     },
     openSnackbar(bool, cor, text) {
       this.snackbar = bool;
@@ -241,8 +256,25 @@ export default {
       if (temp.test(email)) return true;
       return false;
     },
-    pedirSenha(email){
-      controllerLogin.pedirSenha(email)
+    pedirSenha(email) {
+      this.overlay = true
+      const vm = this;
+      controllerLogin.pedirSenha(email).then((result) => {
+        if(result){
+          vm.openSnackbar(true, "green", "E-mail enviado com sucesso.");
+          vm.email = ''
+          vm.senha = ''
+          vm.dialogEsqueciSenha = false
+        }
+        else{
+          vm.openSnackbar(true, "red darken-1", "Não foi possível o envio do e-mail, tente novamente.");
+          vm.dialogEsqueciSenha = false
+          vm.email = ''
+          vm.senha = ''
+        }
+          vm.overlay = false
+      })
+      .catch((error) => console.log(error))
     }
   }
 };
@@ -253,5 +285,9 @@ export default {
 
 * {
   font-family: "Barlow Condensed", sans-serif;
+}
+
+#cardInfo{
+  font-size: 50px;
 }
 </style>

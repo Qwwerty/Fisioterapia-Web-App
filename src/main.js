@@ -21,7 +21,6 @@ const routes = [
 const router = new VueRouter({ routes, mode: 'history'})
 
 router.beforeEach((to, from, next) => {
-
   if(to.path === "/" && localStorage.getItem('email') !== null)
     next('/principal')
   else if(to.path === '/principal' && localStorage.getItem('email') == null)
@@ -29,10 +28,7 @@ router.beforeEach((to, from, next) => {
   else if(to.path !== '/' && to.path !== '/principal')
     next('/')
   else
-    next()
-
-  console.log(to)
-  
+    next()  
 })
 
 Vue.config.productionTip = false

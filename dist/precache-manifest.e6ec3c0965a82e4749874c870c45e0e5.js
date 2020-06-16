@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "766450a6b2330400d743",
-    "url": "/css/app.435b08a3.css"
+    "revision": "93a55f59bbc3d015bbcd",
+    "url": "/css/app.2980b486.css"
   },
   {
-    "revision": "0883e53c42d99e34627f",
-    "url": "/css/chunk-vendors.494dc643.css"
+    "revision": "cf9b61b87bf17b8f8d93",
+    "url": "/css/chunk-vendors.80a946c9.css"
   },
   {
     "revision": "815104333698f655c7587ac7f23bf0a3",
@@ -64,15 +64,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/img/paralisia.png"
   },
   {
-    "revision": "aeb09284e9d7e7953dfaae4c764d83ef",
+    "revision": "0c129cd6005b367314786ad4214818fa",
     "url": "/index.html"
   },
   {
-    "revision": "766450a6b2330400d743",
-    "url": "/js/app.73958128.js"
+    "revision": "93a55f59bbc3d015bbcd",
+    "url": "/js/app.2ff7f2c0.js"
   },
   {
-    "revision": "0883e53c42d99e34627f",
+    "revision": "cf9b61b87bf17b8f8d93",
     "url": "/js/chunk-vendors.53cf1705.js"
   },
   {

@@ -5,6 +5,7 @@ export default class ControllerRanking {
       return new Promise((resolve, reject) => {
           axios
             .get("http://paralisiabackend-com-br.umbler.net/carregarRanking")
+            // .get("http://192.168.0.104:3000/carregarRanking")
             .then(function(response) {
               resolve(response.data)
             })
@@ -18,6 +19,7 @@ export default class ControllerRanking {
   atualizarPontuacao (email) {
     return new Promise((resolve, reject) => {
       axios.get('http://paralisiabackend-com-br.umbler.net/atualizaPontos', {
+        // axios.get('http://192.168.0.104:3000/atualizaPontos', {
         params: {
           email: email
         }
